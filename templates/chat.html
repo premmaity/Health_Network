@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Welcome, {{ current_user }}</h1>
+    <h2>Users:</h2>
+    <ul id="users">
+        {% for user in users %}
+        <li><a href="{{ url_for('private_chat', username=user.username) }}">{{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+<div class="login-page">
+    <div class="container">
+        <h1 class="login-title">Login Page</h1>
+
+        <form method="POST" action="/login" class="login-form">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="form-text"><h6>We'll never share your email with anyone else.</h6></div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock body %}

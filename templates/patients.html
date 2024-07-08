@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Patients</title>
+{% endblock title %}
+
+{% block body %}
+<h1>Patients</h1>
+
+
+    <ul>
+        {% for patient in patients %}
+            <li>{{ patient.username }} - {{ patient.email }}
+                <a href="/patient_detail/{{patient.id}}" class="btn btn-primary">View Profile</a>
+                <a href="{{ url_for('private_chat', username=patient.username) }}" class="btn btn-primary">Chat with {{ patient.username }}</a>
+                <a href="{{ url_for('video_call', username=patient.username) }}" class="btn btn-primary">Call {{ patient.username }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <script>
+        const patientsData = { patients };
+    console.log(patientsData);
+    </script>
+{% endblock body %}

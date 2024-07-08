@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Private Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chat.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Chat with {{ username }}</h1>
+        </div>
+        <div class="chat-messages" id="messages">
+            {% for message in messages %}
+                {% if message.sender == username %}
+                    <div class="message sent">
+                        <div class="message-content">
+                            {{ message.content }}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="message received">
+                        <div class="message-content">
+                            {{ message.content }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="chat-input">
+            <input id="message" placeholder="Enter message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        var socket = io();
+        var room = '{{ room }}';
+
+        socket.on('connect', function() {
+            socket.emit('join', {room: room});
+        });
+
+        socket.on('private_message', function(data) {
+            var messages = document.getElementById('messages');
+            var message = document.createElement('div');
+            message.classList.add('message');
+            if (data.sender == '{{ username }}') {
+                message.classList.add('sent');
+            } else {
+                message.classList.add('received');
+            }
+            var content = document.createElement('div');
+            content.classList.add('message-content');
+            content.textContent = data.message;
+            message.appendChild(content);
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+        });
+
+        function sendMessage() {
+            var message = document.getElementById('message').value;
+            socket.emit('private_message', {
+                room: room,
+                message: message
+            });
+            document.getElementById('message').value = ''; // Clear the input after sending
+        }
+    </script>
+</body>
+</html>

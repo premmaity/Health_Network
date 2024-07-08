@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block title %}
+
+<title>Doctors</title>
+<link rel="stylesheet" href="/static/css/doctors.css">
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Doctors</h1>
+    
+    <ul class="list-group">
+        {% for doctor in doctors %}
+            <li class="list-group-item">
+                <div class="doctor-info">
+                    <span class="doctor-name">{{ doctor.username }}</span> - <span class="doctor-email">{{ doctor.email }}</span>
+                </div>
+                <div class="doctor-actions">
+                    <a href="{{ url_for('private_chat', username=doctor.username) }}" class="btn btn-primary">Chat with {{ doctor.username }}</a>
+                    <a href="{{ url_for('video_call', username=doctor.username) }}" class="btn btn-primary">Call Dr. {{ doctor.username }}</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock body %}

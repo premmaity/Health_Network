@@ -1,0 +1,86 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 50px; /* Adjust the height as needed */
+    width: 70px; 
+    vertical-align: middle; /* Aligns the logo vertically in the middle */
+    border-radius: 100% / 100%;  /* Makes the image oval */
+    object-fit: cover; /* Ensures the image covers the container */
+}
+
+
+.navbar-nav .nav-item .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    background-color: #007bff;
+    color: #ffffff !important;
+    border-radius: 5px;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    color: #ffffff;
+}
+
+/* Close Button for Bootstrap Alerts */
+.btn-close {
+    font-size: 1.5rem;
+    color: #000;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    color: #7b1919;
+    text-decoration: none;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 767.98px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 1rem;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 1.2rem;
+    }
+}
+

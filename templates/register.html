@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Register</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock title %}
+
+{% block body %}
+<div class="register-page">
+    <h1 class="text-center register-title">Register Page</h1>
+    
+
+    <div class="container">
+        <form method="post" action="/register" class="register-form">
+            <div class="mb-3">
+                <label for="uname" class="form-label">Username</label>
+                <input type="text" class="form-control" id="uname" name="uname" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" required>
+            </div>
+            <div class="mb-3">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname">
+            </div>
+            <div class="mb-3">
+                <label for="user_type" class="form-label">Category</label>
+                <div class="user-type-options">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user_type" id="doctor" value="doctor" required>
+                        <label class="form-check-label" for="doctor">Doctor</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user_type" id="patient" value="patient" required>
+                        <label class="form-check-label" for="patient">Patient</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+{% endblock body %}

@@ -1,4 +1,4 @@
-/* General Styles */
+General Styles
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f7f9;
@@ -10,6 +10,7 @@ body {
 .navbar {
     padding: 1rem 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #323232f9
 }
 
 .navbar-brand {
@@ -41,7 +42,7 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link.active {
-    background-color: #007bff;
+    background-color: #ff0000;
     color: #ffffff !important;
     border-radius: 5px;
 }

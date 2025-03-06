@@ -2,24 +2,26 @@
 
 {% block title %}
 <title>Patients</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/patients.css') }}">
 {% endblock title %}
 
 {% block body %}
-<h1>Patients</h1>
+<div class="header">
+    <h1>Patients</h1>
+</div>
 
-
-    <ul>
-        {% for patient in patients %}
-            <li>{{ patient.username }} - {{ patient.email }}
-                <a href="/patient_detail/{{patient.id}}" class="btn btn-primary">View Profile</a>
-                <a href="{{ url_for('private_chat', username=patient.username) }}" class="btn btn-primary">Chat with {{ patient.username }}</a>
-                <a href="{{ url_for('video_call', username=patient.username) }}" class="btn btn-primary">Call {{ patient.username }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    
-    <script>
-        const patientsData = { patients };
-    console.log(patientsData);
-    </script>
+<div class="container">
+    {% for patient in patients %}
+    <div class="card-container">
+        <div class="card">
+            <img src="/static/patient.jpg" alt="{{ patient.username }}">
+            <h2>{{ patient.username }}</h2>
+            <p>{{ patient.email }}</p>
+            <a href="/patient_detail/{{patient.id}}" class="btn btn-primary">View Profile</a>
+            <a href="{{ url_for('private_chat', username=patient.username) }}" class="btn btn-primary">Chat with {{ patient.username }}</a>
+            <a href="{{ url_for('video_call', username=patient.username) }}" class="btn btn-primary">Call {{ patient.username }}</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock body %}

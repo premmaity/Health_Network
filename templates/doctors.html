@@ -1,29 +1,34 @@
 {% extends 'main.html' %}
 
 {% block title %}
-
 <title>Doctors</title>
 <link rel="stylesheet" href="/static/css/doctors.css">
 {% endblock title %}
 
 {% block body %}
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Doctors</h1>
+<div class="container">
     
-    <ul class="list-group">
-        {% for doctor in doctors %}
-            <li class="list-group-item">
-                <div class="doctor-info">
-                    <span class="doctor-name">{{ doctor.username }}</span> - <span class="doctor-email">{{ doctor.email }}</span>
+    {% if doctors %}
+        <h1 id="Doc">Doctors</h1>
+    
+       
+            {% for doctor in doctors %}
+                <div class="card-container">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='doctor.jpg') }}" alt="Doctor Picture">
+                        <h2>{{ doctor.username }}</h2>
+                        <p>{{ doctor.email }}</p>
+                        <a href="{{ url_for('private_chat', username=doctor.username) }}" class="btn btn-primary">Chat with {{ doctor.username }}</a>
+                        <a href="{{ url_for('video_call', username=doctor.username) }}" class="btn btn-primary">Call Dr. {{ doctor.username }}</a>
+                    </div>
                 </div>
-                <div class="doctor-actions">
-                    <a href="{{ url_for('private_chat', username=doctor.username) }}" class="btn btn-primary">Chat with {{ doctor.username }}</a>
-                    <a href="{{ url_for('video_call', username=doctor.username) }}" class="btn btn-primary">Call Dr. {{ doctor.username }}</a>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+     
+    {% else %}
+        <h1 class="text-center mb-4">Sorry, No Doctor available</h1>   
+    {% endif %}
+
 </div>
 
-
 {% endblock body %}
+

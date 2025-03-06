@@ -14,16 +14,11 @@
 <script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
 <script>
     window.onload = function () {
-        function getUrlParams(url) {
-            let urlStr = url.split('?')[1];
-            const urlSearchParams = new URLSearchParams(urlStr);
-            const result = Object.fromEntries(urlSearchParams.entries());
-            return result;
-        }
-
+        // No need to extract roomID from URL when using Jinja variables
         const roomID = "{{ room }}";
         const userID = Math.floor(Math.random() * 10000) + "";
         const userName = "{{ current_user }}";
+        // Use your desired credentials
         const appID = 1126980823;
         const serverSecret = "6fc673c84c5c48fc5a88918b07d162cb";
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);

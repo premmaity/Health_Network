@@ -474,6 +474,8 @@ def video_call(username):
     return render_template('video_call.html', room=chat_room, username=username, current_user=current_user)
 
 if __name__ == '__main__':
+    import os
+    port = int(os.environ.get("PORT", 5000)) 
     with app.app_context():
         
         db.create_all()
